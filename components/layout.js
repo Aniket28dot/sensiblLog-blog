@@ -4,7 +4,7 @@ import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 
-const name = 'Aniket Bhatia';
+const name = 'Sensibllog';
 export const siteTitle = 'Blog by Aniket';
 
 export default function Layout({ children, home }) {

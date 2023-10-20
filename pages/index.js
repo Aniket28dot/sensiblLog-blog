@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Date from '../components/date';
 
 export async function getStaticProps() {
+  // Get external data from the file system, API, DB, etc.
   const allPostsData = getSortedPostsData();
   return {
     props: {
