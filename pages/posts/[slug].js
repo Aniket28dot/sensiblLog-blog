@@ -11,27 +11,6 @@ import PostTitle from '../../components/post-title';
 import MoreStories from '../../components/more-stories';
 import SectionSeparator from '../../components/section-separator';
 
-export async function getStaticProps({ params }) {
-  const postData = await getPostAndMorePosts(params.slug)
-  return {
-    props: {
-      post: postData.post,
-      morePosts: postData.morePosts || [],
-    },
-  }
-}
-
-export async function getStaticPaths() {
-  const posts = await getAllPostsWithSlug();
-
-  return {
-    paths: posts.map(({ slug }) => ({
-      params: { slug },
-    })),
-    fallback: true,
-  };
-}
-
 export default function Post({ post, morePosts }) {
   const router = useRouter()
 
@@ -65,4 +44,25 @@ export default function Post({ post, morePosts }) {
         </Container>
       </Layout>
     );
+  }
+
+  export async function getStaticProps({ params }) {
+    const postData = await getPostAndMorePosts(params.slug)
+    return {
+      props: {
+        post: postData.post,
+        morePosts: postData.morePosts || [],
+      },
+    }
+  }
+  
+  export async function getStaticPaths() {
+    const posts = await getAllPostsWithSlug();
+  
+    return {
+      paths: posts.map(({ slug }) => ({
+        params: { slug },
+      })),
+      fallback: true,
+    };
   }
