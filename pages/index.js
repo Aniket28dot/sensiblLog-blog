@@ -1,15 +1,14 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import Container from '../components/container'
-import Intro from '../components/intro';
+import Navbar from '../components/navbar';
 import HeroPost from '../components/hero-post';
 import MoreStories from '../components/more-stories';
 import { getAllPostsForHome } from '../lib/graphcms';
+import { useSession } from "next-auth/react"
 
 export async function getStaticProps() {
-  // Get external data from the file system, API, DB, etc.
   const allPostsData = await getAllPostsForHome();
-  // const allPostsData = JSON.stringify(postData);
   return {
     props: {
       allPostsData,
@@ -20,6 +19,13 @@ export async function getStaticProps() {
 export default function Home({ allPostsData }) {
   const heroPost = allPostsData[0]
   const morePosts = allPostsData.slice(1)
+
+  const { data: session, status } = useSession()
+
+  if (status === "loading") {
+    return <p>Hang on there...</p>
+  }
+
   return (
     <>
       <Layout home>
@@ -28,7 +34,7 @@ export default function Home({ allPostsData }) {
         </Head>
 
         <Container>
-          <Intro/>
+          <Navbar status={status} />
           {heroPost && (
             <HeroPost
               title={heroPost.title}
