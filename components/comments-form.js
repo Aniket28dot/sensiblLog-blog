@@ -96,12 +96,12 @@ export default function Comments({ slug }) {
                 <div className="grid grid-cols-1 gap-4 mb-4">
                     <div>
                         <input checked={formData.storeData} onChange={onInputChange} type="checkbox" id="storeData" name="storeData" value="true" />
-                        <label className="text-gray-500 cursor-pointer" htmlFor="storeData"> Save my name, email in this browser for the next time I comment.</label>
+                        <label className="text-gray-500 cursor-pointer" htmlFor="storeData"> Save my name, email in this browser for the next time I share my thoughts.</label>
                     </div>
                 </div>
                 {error && <p className="text-xs text-red-500">All fields are mandatory</p>}
                 <div class="float-right">
-                    <button type="button" onClick={handlePostSubmission} class="relative inline-flex h-10 w-auto max-w-full cursor-pointer items-center justify-center overflow-hidden whitespace-pre rounded-md bg-blue-700 px-4 text-center text-sm font-medium normal-case text-white opacity-100 outline-none focus:ring">Post Comment</button>
+                    <button type="button" onClick={handlePostSubmission} class="relative inline-flex h-10 w-auto max-w-full cursor-pointer items-center justify-center overflow-hidden whitespace-pre rounded-md bg-blue-700 px-4 text-center text-sm font-medium normal-case text-white opacity-100 outline-none focus:ring">Send</button>
                     {showSuccessMessage && <span className="text-xl float-right font-semibold mt-3 text-green-500">Thanks for sharing your thoughts!</span>}
                 </div>
             </div>
