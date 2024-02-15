@@ -11,6 +11,7 @@ import PostTitle from '../../components/post-title';
 import MoreStories from '../../components/more-stories';
 import SectionSeparator from '../../components/section-separator';
 import { useSession, signIn } from 'next-auth/react';
+import CommentsForm from '../../components/comments-form';
 
 export default function Post({ post, morePosts }) {
   const { data: session, status } = useSession()
@@ -40,6 +41,7 @@ export default function Post({ post, morePosts }) {
                 />
                 <PostBody content={post.content} />
               </article>
+              <CommentsForm slug={post.slug} />
               <SectionSeparator />
               {morePosts.length > 0 && <MoreStories posts={morePosts} />}
             </>
