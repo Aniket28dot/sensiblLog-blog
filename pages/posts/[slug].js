@@ -69,6 +69,7 @@ export async function getStaticProps({ params }) {
       post: postData.post,
       morePosts: postData.morePosts || [],
     },
+    revalidate: 10
   }
 }
 
